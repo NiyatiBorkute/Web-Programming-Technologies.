@@ -38,7 +38,7 @@
         <option value="mul">Multiplication</option>
         <option value="div">Division</option>
     </select>
-    <button onclick="performCalculation()">Calculate</button>
+    <button onclick="Calculation()">Calculate</button>
 
     <div id="result"></div>
 
@@ -73,11 +73,9 @@
             }
         }
 
-        function calculate(n1, n2, operationCallback) {
-            operationCallback(n1, n2, display);
-        }
+       
 
-        function performCalculation() {
+        function Calculation() {
             const n1 = parseFloat(document.getElementById("num1").value);
             const n2 = parseFloat(document.getElementById("num2").value);
             const op = document.getElementById("operation").value;
@@ -89,16 +87,16 @@
 
             switch (op) {
                 case "add":
-                    calculate(n1, n2, addition);
+                    addition(n1, n2, display);
                     break;
                 case "sub":
-                    calculate(n1, n2, subtraction);
+                    subtraction(n1, n2, display);
                     break;
                 case "mul":
-                    calculate(n1, n2, multiply);
+                    multiply(n1, n2, display);
                     break;
                 case "div":
-                    calculate(n1, n2, division);
+                    division(n1, n2, display);
                     break;
                 default:
                     display("Invalid operation selected.");

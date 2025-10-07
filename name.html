@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Data Entry</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h2>Enter Employee Details</h2>
+  <form id="employeeForm">
+    <input type="text" id="firstname" placeholder="First Name"><br>
+    <input type="text" id="lastname" placeholder="Last Name"><br>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="date" id="dob"><br>
+    <button type="button" onclick="submitForm()">Submit</button>
+    <p id="errorMsg" class="error"></p>
+  </form>
+
+   <div id ="tableContainer"></div>
+   
+   
+
+  <script>
+    function submitForm(){
+      const  fname=document.getElementById("firstname").value.trim();
+      const  lname=document.getElementById("lastname").value.trim();
+      const  email=document.getElementById("email").value;
+      const  dob=document.getElementById("dob").value;
+      const  errorMsg=document.getElementById("errorMsg");
+      const  tableContainer=document.getElementById("tableContainer");
+       
+      errorMsg.textContent = "";
+      tableContainer.innerHTML = "";
+
+       
+        //Check validation
+        if(!fname ||!lname||!email||!dob){
+            errorMsg.innerHTML="Error";
+            return;
+        }
+        const tableHTML=`
+        <table>
+        <tr><th>First Name</th><th>Last Name</th><th>Email</th><th>dob</th></tr>
+        <tr>
+          <td>${fname}</td>
+          <td>${lname}</td>
+          <td>${email}</td>
+          <td>${dob}</td>
+        </tr>
+        </table>
+        `;
+        tableContainer.innerHTML= tableHTML;
+
+        document.getElementById("employeeForm").reset();
+    }
+    
+
+  </script>
+</body>
+</html>
+
